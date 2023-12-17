@@ -1,10 +1,10 @@
 import { createContext, useReducer } from "react";
 
 const initData = {
-    vyska: 6,
-    sirka: 3,
+    vyska: 0,
+    sirka: 0,
     obvod: 0,
-    obsah: 3,
+    obsah: 0,
 
 
 }
@@ -15,7 +15,7 @@ const reducer = (state, action) => {
         const newState = JSON.parse(JSON.stringify(state))
         newState.vyska = newVyska
         newState.sirka = newSirka
-        newState.obvod = 2*(newSirka+newVyska)
+        newState.obvod = 2*(Number(newSirka) +Number(newVyska))
         newState.obsah = newSirka * newVyska
         return newState
     } else if(action.type === "reset"){
@@ -31,12 +31,12 @@ const reducer = (state, action) => {
 
 export const AppContext = createContext(initData)
 
-export const AppProvider = ({children}) => {
-    const store = useReducer(reducer, initData)
-
+export const AppProvider = ({ children }) => {
+    const [store, dispatch] = useReducer(reducer, initData);
+  
     return (
-        <AppContext.Provider value={store}>
-            {children}
-        </AppContext.Provider>
-    )
-} 
+      <AppContext.Provider value={[store, dispatch]}>
+        {children}
+      </AppContext.Provider>
+    );
+  };

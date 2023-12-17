@@ -2,7 +2,7 @@ import { useContext, useRef } from 'react'
 import { AppContext } from "../provider.jsx"
 
 export const Values = () => {
-    const [dispatch] = useContext(AppContext);
+    const [store, dispatch] = useContext(AppContext);
     const vyskaRef = useRef(null)
     const sirkaRef = useRef(null)
     return(
@@ -11,13 +11,11 @@ export const Values = () => {
             <input type="number" ref={vyskaRef}></input>
             <label>Sirka</label>
             <input type="number" ref={sirkaRef}></input>
-            <button onClick={()=>
-        {
+            <button onClick={()=>{
             dispatch({
                 type: "pocitej",
-                payload: [vyskaRef.current, sirkaRef.current]
-            })
-        }}>Pocitej</button>
+                payload: [vyskaRef.current.value, sirkaRef.current.value]
+            })}}>Pocitej</button>
         </form>
     )
 }

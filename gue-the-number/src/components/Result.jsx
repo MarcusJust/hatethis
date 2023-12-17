@@ -3,11 +3,11 @@ import { useContext } from 'react'
 import styles from "./Result.module.css"
 
 export const Results = () => {
-    const [ globalmemo, dispatch ] = useContext(AppContext);
-    const vyska = globalmemo.vyska
-    const sirka = globalmemo.sirka
-    const obvod = globalmemo.obvod
-    const obsah = globalmemo.obsah
+    const [store, dispatch] = useContext(AppContext);
+    const vyska = store.vyska;
+    const sirka = store.sirka;
+    const obvod = store.obvod;
+    const obsah = store.obsah;
     return(
         <div className={styles.result}>
             <table className={styles.view}>
