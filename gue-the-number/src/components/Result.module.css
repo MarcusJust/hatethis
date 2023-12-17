@@ -1,0 +1,35 @@
+.result {
+    display: grid;
+    justify-items: center;
+    gap: 1em;
+}
+
+.rect {
+    fill: var(--button-border);
+}
+
+@container layout (max-width: 270px) {
+    th, td {
+        display: block;
+    }
+    th {
+        text-align: right;
+    }
+    .view {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+    }
+}
+
+@container layout (min-width: 270px) {
+    .view {
+        border-spacing: .5em .25em;
+    }
+}
+
+@container layout (min-width: 420px) {
+    .view {
+        border-spacing: 2.5em .5em;
+    }
+}
